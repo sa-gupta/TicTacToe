@@ -5,49 +5,86 @@
      int loc,turn=0;
     char board[N][N] = {{'1','2','3'},{'4','5','6'},{'7','8','9'}};
     printBoard(board);
-    while(turn!=9){
 
-    printf("\nEnter the location (1-9): ");
+    fillBoardFirstPlayer(board);
+    fillBoardSecondPlayer(board);
+    fillBoardFirstPlayer(board);
+    fillBoardSecondPlayer(board);
+    fillBoardFirstPlayer(board);
+    fillBoardSecondPlayer(board);
+    fillBoardFirstPlayer(board);
+    fillBoardSecondPlayer(board);
+    fillBoardFirstPlayer(board);
+    fillBoardSecondPlayer(board);
+ }
+
+ int fillBoardFirstPlayer(char board[N][N]){
+    int count=0,i,j,loc;
+
+
+    printf("\nEnter the location (First Player): ");
     scanf("%d",&loc);
-    if(loc<1 || loc>9){
-        printf("\nEnter the correct location !!");
+
+
+     if(loc<1 || loc>9){
+        printf("\nEnter the correct location !!\n");
+        fillBoardFirstPlayer(board);
     }
     else{
-        fillBoard(board,loc);
-        fillBoardSecondPlayer(board,loc);
-        turn++;
-    }
-
- }
- }
-
- int fillBoard(char board[N][N],int loc){
-    int count=0,i,j;
-
-    for(i=0;i<N;i++){
+        for(i=0;i<N;i++){
         for(j=0;j<N;j++){
             count++;
             if(count==loc){
+                    if(board[i][j]=='X' || board[i][j]=='O'){
+                        printf("\nLocation already filled !!\n");
+                    }
+                    else{
+
                 board[i][j]='X';
                 printBoard(board);
+                    }
             }
         }
     }
+
+    }
+
+
+
  return 0;
  }
 
- int fillBoardSecondPlayer(char board[N][N],int loc){
-    int count=0,i,j;
+ int fillBoardSecondPlayer(char board[N][N]){
+    int count=0,i,j,loc;
 
-    for(i=0;i<N;i++){
+
+    printf("\nEnter the location (Second Player): ");
+    scanf("%d",&loc);
+
+
+     if(loc<1 || loc>9){
+        printf("\nEnter the correct location !!\n");
+        fillBoardSecondPlayer(board);
+    }
+    else{
+        for(i=0;i<N;i++){
         for(j=0;j<N;j++){
             count++;
             if(count==loc){
+                if(board[i][j]=='X' || board[i][j]=='O'){
+                        printf("\nLocation already filled !!\n");
+                    }
+                    else{
+
                 board[i][j]='O';
                 printBoard(board);
+                    }
+            }
             }
         }
     }
+
+
  return 0;
  }
 
